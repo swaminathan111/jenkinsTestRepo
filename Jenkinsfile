@@ -13,6 +13,7 @@ pipeline {
 	  stages {
 	    stage('Install Packages') {
 	      steps {
+		   echo 'Install package completed'
 	        //sh 'npm install'
 	      }
 	    }
@@ -20,12 +21,14 @@ pipeline {
 	      parallel {
 	        stage('Run Tests') {
 	          steps {
+			   echo 'Test running'
 	            //sh 'npm run test'
 	          }
 	        }
 	        stage('Create Build Artifacts') {
 	          steps {
 	            //sh 'npm run build'
+				 echo 'build project'
 	          }
 	        }
 	      }
@@ -42,6 +45,7 @@ pipeline {
 	              s3Upload(bucket: '<bucket-name>', workingDir:'build', includePathPattern:'**/*');
 	            }
 				*/
+				 echo ' stage deployment'
 	            mail(subject: 'Staging Build', body: 'New Deployment to Staging', to: 'sriswaminathan.vanarasi@ge.com')
 	          }
 	        }
@@ -52,6 +56,7 @@ pipeline {
 	          steps {
 	            
 	            }
+				 echo ' prod deployment'
 	            mail(subject: 'Production Build', body: 'New Deployment to Production', to: 'sriswaminathan.vanarasi@ge.com')
 	          }
 	        }
