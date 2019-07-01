@@ -41,8 +41,8 @@ pipeline {
 	          }
 	          steps {
 	            withAWS(region:'<your-bucket-region>',credentials:'<AWS-Staging-Jenkins-Credential-ID>') {
-	              s3Delete(bucket: '<bucket-name>', path:'**/*')
-	              s3Upload(bucket: '<bucket-name>', workingDir:'build', includePathPattern:'**/*');
+	              //s3Delete(bucket: '<bucket-name>', path:'**/*')
+	              //s3Upload(bucket: '<bucket-name>', workingDir:'build', includePathPattern:'**/*');
 	            }
 				*/
 				 echo ' stage deployment'
